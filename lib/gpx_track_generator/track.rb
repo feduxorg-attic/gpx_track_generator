@@ -34,7 +34,7 @@ module GpxTrackGenerator
     end
 
     def document
-      Nokogiri::XML(
+      @document ||= Nokogiri::XML(
       <<-EOS.strip_heredoc
     <gpx xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1.1" creator="Nokogiri" xmlns="http://www.topografix.com/GPX/1/1"></gpx>
       EOS
@@ -42,7 +42,7 @@ module GpxTrackGenerator
     end
 
     def metadata
-      Nokogiri::XML::DocumentFragment.parse <<-EOS.strip_heredoc
+      @metadata ||= Nokogiri::XML::DocumentFragment.parse <<-EOS.strip_heredoc
       <metadata>
         <desc>GPX file generated nokogiri</desc>
         <link href="http://nokogiri.org/">

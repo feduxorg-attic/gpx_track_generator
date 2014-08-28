@@ -3,7 +3,6 @@ Feature: Create GPX Track File
   I want to transform existing gpx routes or multiple gpx tracks to one gpx track
   In order to use them on my gps device
 
-  @wip
   Scenario: Create from gpx route files
     Given a gpx file named "route1.gpx"
     And a gpx file named "route2.gpx"
