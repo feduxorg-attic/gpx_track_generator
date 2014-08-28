@@ -15,3 +15,13 @@ Around do |_, block|
 
   ENV.replace old_env
 end
+
+Given(/^a gpx file named "(.*?)"$/) do |file|
+  in_current_dir do
+    FileUtils.cp File.expand_path("../../fixtures/#{file}", __FILE__), file
+  end
+end
+
+Then(/^a gpx file named "(.*?)" should exist$/) do |file|
+  step %(a file named "#{file}" should exist)
+end

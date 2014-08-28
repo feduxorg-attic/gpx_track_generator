@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<gpx xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="1.1" creator="Quo v2" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <desc>GPX file generated with blub.</desc>
+    <link href="http://www.example.com">
+      <text>Example</text>
+    </link>
+    <time>2014-08-28 21:54:34 +0200</time>
+  </metadata>
+  <rte>
+    <name>Route 2</name>
+    <desc />
+    <rtept lat="56.2067034732981" lon="-4.74471150135048">
+      <ele>5.41751760323048</ele>
+      <time>2014-08-28 21:54:36 +0200</time>
+      <name>WPT 2</name>
+      <desc />
+    </rtept>
+    <rtept lat="56.2067034732982" lon="-4.74471150135049">
+      <ele>5.41751760323049</ele>
+      <time>2014-08-28 21:54:36 +0200</time>
+      <name>WPT 2</name>
+      <desc />
+    </rtept>
+  </rte>
+</gpx>

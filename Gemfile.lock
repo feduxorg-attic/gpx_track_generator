@@ -3,6 +3,7 @@ PATH
   specs:
     gpx_track_generator (0.0.1)
       nokogiri
+      thor
 
 GEM
   remote: https://rubygems.org/
