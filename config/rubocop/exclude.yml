@@ -1,0 +1,32 @@
+AllCops:
+  Exclude:
+    - 'tmp/**/*'
+
+# Offense count: 1
+# Configuration parameters: Exclude.
+Style/FileName:
+  Enabled: false
+
+# Offense count: 8
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 118
+  Enabled: false
+
+# Offense count: 1
+# Configuration parameters: CountComments.
+Metrics/ClassLength:
+  Max: 160
+  Enabled: false
+
+# Offense count: 3
+Metrics/CyclomaticComplexity:
+  Max: 9
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - lib/middleman-presentation/frontend_component.rb 
+    - lib/middleman-presentation/assets_manager.rb
+    - lib/middleman-presentation/file_extensions.rb
+    - lib/middleman-presentation/commands/slide.rb
