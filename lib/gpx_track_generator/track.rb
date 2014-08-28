@@ -1,5 +1,6 @@
 # encoding: utf-8
 module GpxTrackGenerator
+  # Track
   class Track
     private
 
@@ -23,7 +24,7 @@ module GpxTrackGenerator
 
       files.each_with_object(document.css('trk').first) do |e, a|
         a << document.create_element('trkseg')
-        node_set = Nokogiri::XML(File.open(e)).remove_namespaces!.css('rtept') 
+        node_set = Nokogiri::XML(File.open(e)).remove_namespaces!.css('rtept')
         node_set.each { |n| n.name = 'trkpt' }
 
         a.css('trkseg').last << node_set

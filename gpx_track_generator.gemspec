@@ -8,13 +8,13 @@ Gem::Specification.new do |spec|
   spec.version       = GpxTrackGenerator::VERSION
   spec.authors       = ['Max Meyer']
   spec.email         = ['dev@fedux.org']
-  spec.summary       = %q{Generate a gpx track from gpx tracks/routes}
+  spec.summary       = 'Generate a gpx track from gpx tracks/routes'
   spec.homepage      = 'https://github.com/maxmeyer/gpx_track_generator'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.executables   = spec.files.grep(/^bin\//) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(/^(test|spec|features)\//)
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'nokogiri'
