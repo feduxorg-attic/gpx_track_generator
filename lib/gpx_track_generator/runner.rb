@@ -3,12 +3,12 @@ module GpxTrackGenerator
   # Runner
   class Runner < Thor
     option :file, default: 'track.gpx', desc: 'GPX track file name'
-    desc 'generate', 'Generate gpx track'
-    argument :gpx_files, type: :array, desc: 'GPX track or route files'
-    def generate
-      track = Track.new(gpx_files.map { |f| File.expand_path f })
+    option :name, default: "Track #1", required: true, desc: 'Name for track'
+    argument :input_files, type: :array, desc: 'GPX track or route files'
 
-      File.write(options[:file], track.to_s)
+    desc 'generate', 'Generate gpx track'
+    def generate
+      Api.generate(input_files: input_files, track_name: options[:name], output_file: options[:file])
     end
 
     default_command :generate

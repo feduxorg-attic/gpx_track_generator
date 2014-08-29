@@ -4,12 +4,13 @@ module GpxTrackGenerator
   class Track
     private
 
-    attr_reader :files
+    attr_reader :files, :name
 
     public
 
-    def initialize(files)
+    def initialize(files, name:)
       @files = files
+      @name = name
     end
 
     def to_s
@@ -20,14 +21,14 @@ module GpxTrackGenerator
 
     def build_document
       document.child << metadata
+
       document.child << document.create_element('trk')
+      document.css('trk').first << document.create_element('name')
+      document.css('name').first.content = name
 
       files.each_with_object(document.css('trk').first) do |e, a|
         a << document.create_element('trkseg')
-        node_set = Nokogiri::XML(File.open(e)).remove_namespaces!.css('rtept')
-        node_set.each { |n| n.name = 'trkpt' }
-
-        a.css('trkseg').last << node_set
+        a.css('trkseg').last << e.nodes
       end
 
       document.to_s

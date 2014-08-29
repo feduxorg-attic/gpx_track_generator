@@ -10,5 +10,9 @@ xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/
     <name>WPT 1</name>
     <ele>16.232316396783801</ele>
   </trkpt>
+  <trkpt lat="57.688634024660372" lon="-6.5744374090151107">
+    <name>WPT 1</name>
+    <ele>16.232316396783801</ele>
+  </trkpt>
   </trkseg>
 </trk>

@@ -14,3 +14,27 @@ Feature: Create GPX Track File
     And a gpx file named "track2.gpx"
     When I successfully run `gpx_track g track1.gpx track2.gpx`
     Then a gpx file named "track.gpx" should exist with "4" track nodes
+
+  Scenario: Change output file name
+    Given a gpx file named "track1.gpx"
+    And a gpx file named "track2.gpx"
+    When I successfully run `gpx_track g --file track123.gpx track1.gpx track2.gpx`
+    Then a gpx file named "track123.gpx" should exist
+
+  Scenario: Define name
+    Given a gpx file named "track1.gpx"
+    And a gpx file named "track2.gpx"
+    When I successfully run `gpx_track g --name "My Name" track1.gpx track2.gpx`
+    Then the gpx file "track.gpx" should contain:
+    """
+    <name>My Name</name>
+    """
+
+  Scenario: Default name
+    Given a gpx file named "track1.gpx"
+    And a gpx file named "track2.gpx"
+    When I successfully run `gpx_track g track1.gpx track2.gpx`
+    Then the gpx file "track.gpx" should contain:
+    """
+    <name>Track #1</name>
+    """

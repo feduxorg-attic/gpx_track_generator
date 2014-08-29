@@ -28,7 +28,11 @@ Then(/^the gpx file named "(.*?)" should have "(.*?)" track nodes$/) do |file, c
   end
 end
 
-Then(/^a gpx file named "(.*?)" should exist(?: with "(.*?)" track nodes)$/) do |file, count|
+Then(/^a gpx file named "(.*?)" should exist(?: with "(.*?)" track nodes)?$/) do |file, count|
   step %(a file named "#{file}" should exist)
-  step %(the gpx file named "#{file}" should have "#{count}" track nodes)
+  step %(the gpx file named "#{file}" should have "#{count}" track nodes) if count
+end
+
+Then(/^the gpx file "(.*?)" should contain:$/) do |file, content|
+  step %(the file "#{file}" should contain:), content
 end
