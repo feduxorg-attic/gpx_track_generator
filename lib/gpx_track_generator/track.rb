@@ -30,6 +30,12 @@ module GpxTrackGenerator
     end
 
     def build_document
+      gpx_files = if reverse
+                files.reverse
+              else
+                files
+              end
+
       document.child << metadata
 
       document.child << document.create_element('trk')
@@ -39,7 +45,7 @@ module GpxTrackGenerator
       if single_segment
         document.css('trk').first << document.create_element('trkseg')
 
-        files.each_with_object(document.css('trk').first) do |e, a|
+        gpx_files.each_with_object(document.css('trk').first) do |e, a|
           a << "<!-- #{e.file_name} -->"
           document.css('trkseg').last << (reverse ? e.nodes.reverse : e.nodes)
         end
