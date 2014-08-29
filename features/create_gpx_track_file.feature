@@ -38,3 +38,35 @@ Feature: Create GPX Track File
     """
     <name>Track #1</name>
     """
+
+  Scenario: Normal order track
+    Given a gpx file named "track1.gpx"
+    And a gpx file named "track2.gpx"
+    When I successfully run `gpx_track g track1.gpx track2.gpx`
+    Then the gpx file "track.gpx" should contain:
+    """
+             <trkpt lat="56.688634024660372" lon="-6.5744374090151107">
+                <name>WP 1</name>
+                <ele>16.232316396783801</ele>
+             </trkpt>
+             <trkpt lat="57.688634024660372" lon="-6.5744374090151107">
+                <name>WP 2</name>
+                <ele>16.232316396783801</ele>
+             </trkpt>
+    """
+
+  Scenario: Reverse track
+    Given a gpx file named "track1.gpx"
+    And a gpx file named "track2.gpx"
+    When I successfully run `gpx_track g --reverse track1.gpx track2.gpx`
+    Then the gpx file "track.gpx" should contain:
+    """
+             <trkpt lat="57.688634024660372" lon="-6.5744374090151107">
+                <name>WP 2</name>
+                <ele>16.232316396783801</ele>
+             </trkpt>
+             <trkpt lat="56.688634024660372" lon="-6.5744374090151107">
+                <name>WP 1</name>
+                <ele>16.232316396783801</ele>
+             </trkpt>
+    """

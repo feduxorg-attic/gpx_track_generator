@@ -25,6 +25,8 @@ Or install it yourself as:
 
 Create your track file from ruby code. This can be helpful in your `Rakefile`.
 
+*Create track file*
+
 ```ruby
 input_files = %w(track1.gpx route2.gpx)
 track_name  = 'Track ABC'
@@ -34,6 +36,21 @@ GpxTrackGenerator::Api.generate(
   input_files: input_files,
   track_name: track_name,
   output_file: output_file
+)
+```
+
+*Reverse track*
+
+```ruby
+input_files = %w(track1.gpx route2.gpx)
+track_name  = 'Track ABC'
+output_file = 'my_track.gpx'
+
+GpxTrackGenerator::Api.generate(
+  input_files: input_files,
+  track_name: track_name,
+  output_file: output_file,
+  reverse: true
 )
 ```
 
@@ -51,7 +68,11 @@ gpx_track *.gpx
 gpx_track --name "Track Name" *.gpx
 ```
 
-TODO: Write usage instructions here
+*Reverse track*
+
+```
+gpx_track --name "Track Name" --reverse *.gpx
+```
 
 ## Contributing
 

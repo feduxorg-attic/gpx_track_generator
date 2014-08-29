@@ -4,13 +4,14 @@ module GpxTrackGenerator
   class Track
     private
 
-    attr_reader :files, :name
+    attr_reader :files, :name, :reverse
 
     public
 
-    def initialize(files, name:)
+    def initialize(files, name:, reverse:)
       @files = files
       @name = name
+      @reverse = reverse
     end
 
     def to_s
@@ -37,7 +38,7 @@ module GpxTrackGenerator
       files.each_with_object(document.css('trk').first) do |e, a|
         a << "<!-- #{e.file_name} -->"
         a << document.create_element('trkseg')
-        a.css('trkseg').last << e.nodes
+        a.css('trkseg').last << (reverse ? e.nodes.reverse : e.nodes)
       end
 
       document.human
