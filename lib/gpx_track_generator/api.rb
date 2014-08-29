@@ -1,5 +1,6 @@
 # encoding: utf-8
 module GpxTrackGenerator
+  # Main api
   module Api
     def self.generate(input_files:, track_name:, output_file:)
       files = input_files.map { |f| GpxFile.new(File.expand_path(f)) }

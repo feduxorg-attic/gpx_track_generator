@@ -3,7 +3,7 @@ module GpxTrackGenerator
   # Runner
   class Runner < Thor
     option :file, default: 'track.gpx', desc: 'GPX track file name'
-    option :name, default: "Track #1", required: true, desc: 'Name for track'
+    option :name, default: 'Track #1', required: true, desc: 'Name for track'
     argument :input_files, type: :array, desc: 'GPX track or route files'
 
     desc 'generate', 'Generate gpx track'

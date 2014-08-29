@@ -1,8 +1,12 @@
 # encoding: utf-8
 module GpxTrackGenerator
+  # A gpx file
   class GpxFile
+    private
 
     attr_reader :path
+
+    public
 
     def initialize(path)
       @path = path
@@ -16,7 +20,14 @@ module GpxTrackGenerator
       node_set += extract_route_nodes unless extract_route_nodes.empty?
       node_set += extract_track_nodes unless extract_track_nodes.empty?
 
+      node_set.css('trkpt').each_with_index { |e, i| e.css('name').first.content = "WP #{i + 1}" }
+
       node_set
+    end
+
+    # Return file name
+    def file_name
+      File.basename(path)
     end
 
     private
