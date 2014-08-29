@@ -52,6 +52,20 @@ GpxTrackGenerator::Api.generate(
   output_file: output_file,
   reverse: true
 )
+
+*Single segment per Track*
+
+```ruby
+input_files = %w(track1.gpx route2.gpx)
+track_name  = 'Track ABC'
+output_file = 'my_track.gpx'
+
+GpxTrackGenerator::Api.generate(
+  input_files: input_files,
+  track_name: track_name,
+  output_file: output_file,
+  single_segment: true
+)
 ```
 
 ### CLI
@@ -71,7 +85,13 @@ gpx_track --name "Track Name" *.gpx
 *Reverse track*
 
 ```
-gpx_track --name "Track Name" --reverse *.gpx
+gpx_track --reverse *.gpx
+```
+
+*Single Segment for the whole track*
+
+```
+gpx_track --single-segment *.gpx
 ```
 
 ## Contributing
