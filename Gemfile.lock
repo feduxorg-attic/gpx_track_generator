@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gpx_track_generator (0.1.0)
+    gpx_track_generator (0.1.1)
       activesupport
       nokogiri
       nokogiri-pretty
