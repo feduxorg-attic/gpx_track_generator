@@ -10,6 +10,8 @@ module GpxTrackGenerator
 
     desc 'generate', 'Generate gpx track'
     def generate
+      GpxTrackGenerator.logger.info "Generating GPX Track \"#{options[:file]}\" from #{input_files.to_list(last_separator: ' and ')}"
+
       Api.generate(
         input_files: input_files,
         track_name: options[:name],

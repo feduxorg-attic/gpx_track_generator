@@ -3,6 +3,7 @@ PATH
   specs:
     gpx_track_generator (0.3.0)
       activesupport
+      fedux_org-stdlib
       nokogiri
       nokogiri-pretty
       thor
