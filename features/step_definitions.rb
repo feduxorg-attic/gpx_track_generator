@@ -22,6 +22,13 @@ Given(/^a gpx file named "(.*?)"$/) do |file|
   end
 end
 
-Then(/^a gpx file named "(.*?)" should exist$/) do |file|
+Then(/^the gpx file named "(.*?)" should have "(.*?)" track nodes$/) do |file, count|
+  in_current_dir do
+    expect(Nokogiri::XML(File.open(file)).css('trkpt').to_a.size).to eq count.to_i
+  end
+end
+
+Then(/^a gpx file named "(.*?)" should exist(?: with "(.*?)" track nodes)$/) do |file, count|
   step %(a file named "#{file}" should exist)
+  step %(the gpx file named "#{file}" should have "#{count}" track nodes)
 end

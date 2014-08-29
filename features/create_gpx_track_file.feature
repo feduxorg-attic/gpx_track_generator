@@ -7,4 +7,10 @@ Feature: Create GPX Track File
     Given a gpx file named "route1.gpx"
     And a gpx file named "route2.gpx"
     When I successfully run `gpx_track g route1.gpx route2.gpx`
-    Then a gpx file named "track.gpx" should exist
+    Then a gpx file named "track.gpx" should exist with "4" track nodes
+
+  Scenario: Create from gpx track files
+    Given a gpx file named "track1.gpx"
+    And a gpx file named "track2.gpx"
+    When I successfully run `gpx_track g track1.gpx track2.gpx`
+    Then a gpx file named "track.gpx" should exist with "4" track nodes
