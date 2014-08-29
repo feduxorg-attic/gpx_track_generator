@@ -31,10 +31,10 @@ module GpxTrackGenerator
 
     def build_document
       gpx_files = if reverse
-                files.reverse
-              else
-                files
-              end
+                    files.reverse
+                  else
+                    files
+                  end
 
       document.child << metadata
 
