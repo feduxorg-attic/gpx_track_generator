@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gpx_track_generator (0.0.2)
+    gpx_track_generator (0.0.3)
       activesupport
       nokogiri
       thor
