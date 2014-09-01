@@ -27,8 +27,8 @@ Or install it yourself as:
 ### Introduction
 
 The order of the gpx files which should be used by `gpx_track_generator` is
-important. It iterates over all files an concatenate the found nodes one after
-another. So make sure that all files are in the correct order.
+important. The script iterates over all files and concatenates the found nodes
+one after another. 
 
 #### Example:
 
