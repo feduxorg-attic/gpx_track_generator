@@ -1,5 +1,8 @@
 # Gpx Track Generator
 
+[![Build Status](https://travis-ci.org/maxmeyer/gpx_track_generator.svg?branch=master)](https://travis-ci.org/maxmeyer/gpx_track_generator)
+[![Gem Version](https://badge.fury.io/rb/gpx_track_generator.svg)](http://badge.fury.io/rb/gpx_track_generator)
+
 This gem creates a single gpx track from all given gpx-files. Those files can
 contain route- or track-points. This might be handy if you've got single
 gpx-files for each part of a long distance walk, but don't want to litter your
