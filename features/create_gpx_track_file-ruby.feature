@@ -93,11 +93,11 @@ Feature: Create GPX Track File
         <!-- track2.gpx -->
         <trkseg>
           <trkpt lat="57.688634024660372" lon="-6.5744374090151107">
-            <name>WP 4</name>
+            <name>WP 2</name>
             <ele>16.232316396783801</ele>
           </trkpt>
           <trkpt lat="56.688634024660372" lon="-6.5744374090151107">
-            <name>WP 3</name>
+            <name>WP 1</name>
             <ele>16.232316396783801</ele>
           </trkpt>
         </trkseg>

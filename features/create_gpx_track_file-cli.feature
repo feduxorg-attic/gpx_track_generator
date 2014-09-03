@@ -67,44 +67,6 @@ Feature: Create GPX Track File
         <!-- track2.gpx -->
         <trkseg>
           <trkpt lat="57.688634024660372" lon="-6.5744374090151107">
-            <name>WP 4</name>
-            <ele>16.232316396783801</ele>
-          </trkpt>
-          <trkpt lat="56.688634024660372" lon="-6.5744374090151107">
-            <name>WP 3</name>
-            <ele>16.232316396783801</ele>
-          </trkpt>
-        </trkseg>
-    """
-
-  Scenario: Reverse files
-    Given a gpx file named "track1.gpx"
-    And a gpx file named "track2.gpx"
-    When I successfully run `gpx_track g --reverse-files track1.gpx track2.gpx`
-    Then the gpx file "track.gpx" should contain:
-    """
-        <!-- track2.gpx -->
-        <trkseg>
-          <trkpt lat="56.688634024660372" lon="-6.5744374090151107">
-            <name>WP 1</name>
-            <ele>16.232316396783801</ele>
-          </trkpt>
-          <trkpt lat="57.688634024660372" lon="-6.5744374090151107">
-            <name>WP 2</name>
-            <ele>16.232316396783801</ele>
-          </trkpt>
-        </trkseg>
-    """
-
-  Scenario: Reverse waypoints
-    Given a gpx file named "track1.gpx"
-    And a gpx file named "track2.gpx"
-    When I successfully run `gpx_track g --reverse-waypoints-of-input-files track1.gpx track2.gpx`
-    Then the gpx file "track.gpx" should contain:
-    """
-        <!-- track2.gpx -->
-        <trkseg>
-          <trkpt lat="57.688634024660372" lon="-6.5744374090151107">
             <name>WP 2</name>
             <ele>16.232316396783801</ele>
           </trkpt>
