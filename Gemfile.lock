@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gpx_track_generator (0.3.4)
+    gpx_track_generator (0.3.5)
       activesupport
       fedux_org-stdlib
       nokogiri
