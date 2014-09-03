@@ -20,8 +20,6 @@ module GpxTrackGenerator
       node_set += extract_route_nodes unless extract_route_nodes.empty?
       node_set += extract_track_nodes unless extract_track_nodes.empty?
 
-      node_set.css('trkpt').each_with_index { |e, i| e.css('name').first.content = "WP #{i + 1}" }
-
       node_set
     end
 

@@ -43,6 +43,7 @@ Given(/^a converter script named "(.*?)" with$/) do |name, content|
     # encoding: utf-8
     require 'gpx_track_generator'
   EOS
+
   content = header + content
 
   step %(a file named "#{name}" with mode "0755" and with:), content

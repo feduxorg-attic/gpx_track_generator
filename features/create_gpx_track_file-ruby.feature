@@ -88,11 +88,11 @@ Feature: Create GPX Track File
     Then the gpx file "track.gpx" should contain:
     """
              <trkpt lat="57.688634024660372" lon="-6.5744374090151107">
-                <name>WP 2</name>
+                <name>WP 4</name>
                 <ele>16.232316396783801</ele>
              </trkpt>
              <trkpt lat="56.688634024660372" lon="-6.5744374090151107">
-                <name>WP 1</name>
+                <name>WP 3</name>
                 <ele>16.232316396783801</ele>
              </trkpt>
     """
@@ -122,11 +122,11 @@ Feature: Create GPX Track File
                 <ele>15.232316396783801</ele>
              </trkpt>
              <trkpt lat="56.688634024660372" lon="-6.5744374090151107">
-                <name>WP 1</name>
+                <name>WP 3</name>
                 <ele>16.232316396783801</ele>
              </trkpt>
              <trkpt lat="57.688634024660372" lon="-6.5744374090151107">
-                <name>WP 2</name>
+                <name>WP 4</name>
                 <ele>16.232316396783801</ele>
              </trkpt>
           </trkseg>
@@ -159,11 +159,11 @@ Feature: Create GPX Track File
           </trkseg>
           <trkseg>
              <trkpt lat="56.688634024660372" lon="-6.5744374090151107">
-                <name>WP 1</name>
+                <name>WP 3</name>
                 <ele>16.232316396783801</ele>
              </trkpt>
              <trkpt lat="57.688634024660372" lon="-6.5744374090151107">
-                <name>WP 2</name>
+                <name>WP 4</name>
                 <ele>16.232316396783801</ele>
              </trkpt>
           </trkseg>
