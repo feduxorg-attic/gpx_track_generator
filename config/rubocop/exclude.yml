@@ -24,9 +24,3 @@ Metrics/CyclomaticComplexity:
   Max: 9
   Enabled: false
 
-Metrics/PerceivedComplexity:
-  Exclude:
-    - lib/middleman-presentation/frontend_component.rb 
-    - lib/middleman-presentation/assets_manager.rb
-    - lib/middleman-presentation/file_extensions.rb
-    - lib/middleman-presentation/commands/slide.rb

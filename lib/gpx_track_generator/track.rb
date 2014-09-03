@@ -29,6 +29,7 @@ module GpxTrackGenerator
       'https://github.com/maxmeyer/gpx_track_generator'
     end
 
+    # rubocop:disable Metrics/PerceivedComplexity
     def build_document
       gpx_files = if reverse
                     files.reverse
@@ -66,6 +67,7 @@ module GpxTrackGenerator
 
       document.human
     end
+    # rubocop:enable Metrics/PerceivedComplexity
 
     def document
       @document ||= Nokogiri::XML(
