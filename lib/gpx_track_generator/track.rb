@@ -4,16 +4,15 @@ module GpxTrackGenerator
   class Track
     private
 
-    attr_reader :files, :name, :reverse_waypoints_of_input_files, :reverse_files, :single_segment
+    attr_reader :files, :name, :reverse, :single_segment
 
     public
 
-    def initialize(files, name:, reverse_files:, reverse_waypoints_of_input_files:, single_segment:)
-      @files                            = files
-      @name                             = name
-      @reverse_files                    = reverse_files
-      @reverse_waypoints_of_input_files = reverse_waypoints_of_input_files
-      @single_segment                   = single_segment
+    def initialize(files, name:, reverse:, single_segment:)
+      @files          = files
+      @name           = name
+      @reverse        = reverse
+      @single_segment = single_segment
     end
 
     def to_s
@@ -32,12 +31,6 @@ module GpxTrackGenerator
 
     # rubocop:disable Metrics/PerceivedComplexity
     def build_document
-      gpx_files = if reverse_files
-                    files.reverse
-                  else
-                    files
-                  end
-
       document.child << metadata
 
       document.child << document.create_element('trk')
@@ -47,22 +40,22 @@ module GpxTrackGenerator
       if single_segment
         document.css('trk').first << document.create_element('trkseg')
 
-        gpx_files.each_with_object(document.css('trk').first) do |e, a|
+        files.each_with_object(document.css('trk').first) do |e, a|
           segment = a.css('trkseg').last
           segment << "<!-- #{e.file_name} -->"
-          segment << (reverse_waypoints_of_input_files ? e.nodes.reverse : e.nodes)
+          segment << (reverse ? e.nodes.reverse : e.nodes)
         end
       else
-        gpx_files.each_with_object(document.css('trk').first) do |e, a|
+        files.each_with_object(document.css('trk').first) do |e, a|
           a << "<!-- #{e.file_name} -->"
           a << document.create_element('trkseg')
 
           segment = a.css('trkseg').last
-          segment << (reverse_waypoints_of_input_files ? e.nodes.reverse : e.nodes)
+          segment << (reverse ? e.nodes.reverse : e.nodes)
         end
       end
 
-      if reverse_waypoints_of_input_files
+      if reverse
         document.css('trkpt').reverse.each_with_index { |e, i| e.css('name').first.content = "WP #{i + 1}" }
       else
         document.css('trkpt').each_with_index { |e, i| e.css('name').first.content = "WP #{i + 1}" }

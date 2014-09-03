@@ -2,13 +2,12 @@
 module GpxTrackGenerator
   # Main api
   module Api
-    def self.generate(input_files:, track_name:, output_file:, reverse: false, reverse_waypoints_of_input_files: false, reverse_files: false, single_segment: false)
+    def self.generate(input_files:, track_name:, output_file:, reverse: false, single_segment: false)
       files = input_files.map { |f| GpxFile.new(File.expand_path(f)) }
       track = Track.new(
         files,
         name: track_name,
-        reverse_files: reverse || reverse_files,
-        reverse_waypoints_of_input_files: reverse || reverse_waypoints_of_input_files,
+        reverse: reverse,
         single_segment: single_segment
       )
 
