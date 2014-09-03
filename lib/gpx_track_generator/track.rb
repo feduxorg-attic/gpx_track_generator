@@ -61,7 +61,7 @@ module GpxTrackGenerator
         document.css('trkpt').each_with_index { |e, i| e.css('name').first.content = "WP #{i + 1}" }
       end
 
-      document.human
+      document.dup.human
     end
     # rubocop:enable Metrics/PerceivedComplexity
 
