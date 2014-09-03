@@ -4,16 +4,16 @@ module GpxTrackGenerator
   class Track
     private
 
-    attr_reader :files, :name, :reverse_waypoints, :reverse_files, :single_segment
+    attr_reader :files, :name, :reverse_waypoints_of_input_files, :reverse_files, :single_segment
 
     public
 
-    def initialize(files, name:, reverse_files:, reverse_waypoints:, single_segment:)
-      @files             = files
-      @name              = name
-      @reverse_files     = reverse_files
-      @reverse_waypoints = reverse_waypoints
-      @single_segment    = single_segment
+    def initialize(files, name:, reverse_files:, reverse_waypoints_of_input_files:, single_segment:)
+      @files                            = files
+      @name                             = name
+      @reverse_files                    = reverse_files
+      @reverse_waypoints_of_input_files = reverse_waypoints_of_input_files
+      @single_segment                   = single_segment
     end
 
     def to_s
@@ -50,7 +50,7 @@ module GpxTrackGenerator
         gpx_files.each_with_object(document.css('trk').first) do |e, a|
           segment = a.css('trkseg').last
           segment << "<!-- #{e.file_name} -->"
-          segment << (reverse_waypoints ? e.nodes.reverse : e.nodes)
+          segment << (reverse_waypoints_of_input_files ? e.nodes.reverse : e.nodes)
         end
       else
         gpx_files.each_with_object(document.css('trk').first) do |e, a|
@@ -58,11 +58,11 @@ module GpxTrackGenerator
           a << document.create_element('trkseg')
 
           segment = a.css('trkseg').last
-          segment << (reverse_waypoints ? e.nodes.reverse : e.nodes)
+          segment << (reverse_waypoints_of_input_files ? e.nodes.reverse : e.nodes)
         end
       end
 
-      if reverse_waypoints
+      if reverse_waypoints_of_input_files
         document.css('trkpt').reverse.each_with_index { |e, i| e.css('name').first.content = "WP #{i + 1}" }
       else
         document.css('trkpt').each_with_index { |e, i| e.css('name').first.content = "WP #{i + 1}" }

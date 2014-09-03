@@ -5,7 +5,7 @@ module GpxTrackGenerator
     option :file, default: 'track.gpx', desc: 'GPX track file name'
     option :name, default: 'Track #1', required: true, desc: 'Name for track'
     option :reverse, type: :boolean, default: false, desc: 'Reverse track (default: false)'
-    option :reverse_waypoints, type: :boolean, default: false, desc: 'Reverse waypoints in tracks (default: false)'
+    option :reverse_waypoints_of_input_files, type: :boolean, default: false, desc: 'Reverse waypoints in tracks (default: false)'
     option :reverse_files, type: :boolean, default: false, desc: 'Reverse track files (default: false)'
     option :single_segment, type: :boolean, default: false, desc: 'Only one track segment for the whole track. Otherwise one segment for each input file (default: true)'
     argument :input_files, type: :array, desc: 'GPX track or route files'
@@ -19,7 +19,7 @@ module GpxTrackGenerator
         track_name: options[:name],
         output_file: options[:file],
         reverse: options[:reverse],
-        reverse_waypoints: options[:reverse_waypoints],
+        reverse_waypoints_of_input_files: options[:reverse_waypoints_of_input_files],
         reverse_files: options[:reverse_files],
         single_segment: options[:single_segment]
       )

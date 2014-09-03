@@ -99,7 +99,7 @@ Feature: Create GPX Track File
   Scenario: Reverse waypoints
     Given a gpx file named "track1.gpx"
     And a gpx file named "track2.gpx"
-    When I successfully run `gpx_track g --reverse-waypoints track1.gpx track2.gpx`
+    When I successfully run `gpx_track g --reverse-waypoints-of-input-files track1.gpx track2.gpx`
     Then the gpx file "track.gpx" should contain:
     """
         <!-- track2.gpx -->
