@@ -1,38 +1,50 @@
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:output method="xml" encoding="ISO-8859-1"/>
-  <xsl:param name="indent-increment" select="' '"/>
-  <xsl:template name="newline">
-    <xsl:text disable-output-escaping="yes">
-    </xsl:text>
-  </xsl:template>
-  <xsl:template match="comment()">
-    <xsl:copy/>
-  </xsl:template>
-  <xsl:template match="text()">
-    <xsl:param name="indent" select="''"/>
-    <xsl:call-template name="newline"/>
-    <xsl:value-of select="$indent"/>
-    <xsl:value-of select="normalize-space(.)"/>
-  </xsl:template>
-  <xsl:template match="text()[normalize-space(.)='']"/>
-  <xsl:template match="*">
-    <xsl:param name="indent" select="''"/>
-    <xsl:call-template name="newline"/>
-    <xsl:value-of select="$indent"/>
-    <xsl:choose>
-      <xsl:when test="count(child::*) > 0">
-        <xsl:copy>
-          <xsl:copy-of select="@*"/>
-          <xsl:apply-templates select="*|text()">
-            <xsl:with-param name="indent" select="concat ($indent, $indent-increment)"/>
-          </xsl:apply-templates>
-          <xsl:call-template name="newline"/>
-          <xsl:value-of select="$indent"/>
-        </xsl:copy>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:copy-of select="."/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:output method="xml" indent="yes"/>
+<xsl:strip-space elements="*"/>
+
+<xsl:template match="node()|@*">
+    <xsl:copy>
+        <xsl:apply-templates select="node()|@*"/>
+    </xsl:copy>
+</xsl:template>
+
+
+<xsl:template match="things">
+    <mainElements>
+        <xsl:apply-templates select="thing|comment()"/>
+    </mainElements>
+</xsl:template>
+
+
+<xsl:template match="thing">
+    <specialThing>
+        <xsl:apply-templates select="weight"/>
+        <xsl:apply-templates select="color"/>
+        <xsl:apply-templates select="state"/>           
+    </specialThing>
+    <xsl:apply-templates select="comment()[not(following-sibling::*)]"/>
+</xsl:template>
+
+
+<xsl:template match="weight">
+    <xsl:apply-templates select="preceding-sibling::comment()[generate-id(following-sibling::*[1])=generate-id(current())]"/>
+    <PropertyOne>
+        <xsl:value-of select="."/>
+    </PropertyOne>
+</xsl:template>
+
+<xsl:template match="color">
+    <xsl:apply-templates select="preceding-sibling::comment()[generate-id(following-sibling::*[1])=generate-id(current())]"/>
+    <PropertyTwo>
+        <xsl:value-of select="."/>
+    </PropertyTwo>
+</xsl:template>
+
+<xsl:template match="state">
+    <xsl:apply-templates select="preceding-sibling::comment()[generate-id(following-sibling::*[1])=generate-id(current())]"/>
+    <PropertyThree>
+        <xsl:value-of select="."/>
+    </PropertyThree>
+</xsl:template>
+
 </xsl:stylesheet>

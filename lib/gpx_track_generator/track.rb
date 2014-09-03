@@ -46,8 +46,9 @@ module GpxTrackGenerator
         document.css('trk').first << document.create_element('trkseg')
 
         gpx_files.each_with_object(document.css('trk').first) do |e, a|
-          a << "<!-- #{e.file_name} -->"
-          document.css('trkseg').last << (reverse ? e.nodes.reverse : e.nodes)
+          segment = a.css('trkseg').last
+          segment << "<!-- #{e.file_name} -->"
+          segment << (reverse ? e.nodes.reverse : e.nodes)
         end
       else
         gpx_files.each_with_object(document.css('trk').first) do |e, a|
@@ -62,8 +63,6 @@ module GpxTrackGenerator
       else
         document.css('trkpt').each_with_index { |e, i| e.css('name').first.content = "WP #{i + 1}" }
       end
-      require 'pry'
-      binding.pry
 
       document.human
     end
