@@ -36,3 +36,14 @@ end
 Then(/^the gpx file "(.*?)" should contain:$/) do |file, content|
   step %(the file "#{file}" should contain:), content
 end
+
+Given(/^a converter script named "(.*?)" with$/) do |name, content|
+  header = <<-EOS.strip_heredoc
+    #!/usr/bin/env ruby
+    # encoding: utf-8
+    require 'gpx_track_generator'
+  EOS
+  content = header + content
+
+  step %(a file named "#{name}" with mode "0755" and with:), content
+end
